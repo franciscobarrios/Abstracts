@@ -22,20 +22,17 @@ public class GdxAsteroids extends ApplicationAdapter {
         sr.circle(10, 10, 10);
         sr.setColor(Color.CYAN);
 
-
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 600);
         batch = new SpriteBatch();
 
         rectangle = new Rectangle(0, 0, 100, 100);
-
     }
 
     @Override
     public void render() {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        sr.
         camera.update();
         batch.setProjectionMatrix(camera.combined);
     }

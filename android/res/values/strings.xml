@@ -3,7 +3,6 @@
 
     <string name="app_name">Asteroids</string>
     <string name="title_activity_main">Asteroids</string>
-    <!-- Strings used for fragments for navigation -->
 
     <string name="main_title">Asteroids</string>
 
