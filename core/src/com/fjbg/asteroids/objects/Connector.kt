@@ -1,16 +1,51 @@
 package com.fjbg.asteroids.objects
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.fjbg.asteroids.common.CONNECT_DISTANCE
+import com.fjbg.asteroids.common.objectColor
 import kotlin.math.sqrt
 
-class Connector {
-    fun connect(firstStar: Star, secondStar: Star, shape: ShapeRenderer) {
-        shape.setColor(0f, 1f, 1f, 0.4f)
-        shape.rectLine(firstStar.x, firstStar.y, secondStar.x, secondStar.y, 1f)
+data class Connector(
+        val shape: ShapeRenderer
+) {
+
+    val linked = arrayListOf<Pair<Node, Node>>()
+
+    fun distanceBetweenStars(n1: Node, n2: Node) = sqrt((n1.y - n2.y) * (n1.y - n2.y) + (n1.x - n2.x) * (n1.x - n2.x))
+
+    fun connect(n1: Node, n2: Node) {
+        val d = distanceBetweenStars(n1, n2)
+        val alpha = when {
+            d < 100 -> 1f
+            d >= 100 && d < 200 -> 0.75f
+            d >= 200 && d < 300 -> 0.5f
+            d >= 300 && d < CONNECT_DISTANCE -> 0.25f
+            else -> 0.1f
+        }
+
+        shape.color = objectColor(alpha)
+        shape.rectLine(n1.x, n1.y, n2.x, n2.y, 2f)
+        linked.add(Pair(n1, n2))
     }
 
-    fun distanceBetweenStars(firstStar: Star, secondStar: Star) = sqrt((firstStar.y - secondStar.y) * (firstStar.y - secondStar.y) + (firstStar.x - secondStar.x) * (firstStar.x - secondStar.x))
 
-    fun distanceToTouch(x: Int, y: Int, star: Star) = sqrt((y - star.y) * (y - star.y) + (x - star.x) * (x - star.x))
+    fun connectedFiled(n1: Node, n2: Node, n3: Node): Triple<Node, Node, Node> = Triple(n1, n2, n3)
+
+    fun createField(n1: Node, n2: Node, n3: Node) {
+        val d = distanceBetweenStars(n1, n2)
+        val alpha = when {
+            d < 100 -> 0.2f
+            d >= 100 && d < 200 -> 0.1f
+            d >= 200 && d < 300 -> 0.05f
+            d >= 300 && d < CONNECT_DISTANCE -> 0.02f
+            else -> 0.01f
+        }
+        shape.triangle(
+                n1.x, n1.y,
+                n2.x, n2.y,
+                n3.x, n3.y
+        )
+        shape.color = objectColor(0.1f)
+    }
 }
 

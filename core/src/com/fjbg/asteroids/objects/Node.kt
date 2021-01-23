@@ -2,14 +2,20 @@ package com.fjbg.asteroids.objects
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.fjbg.asteroids.common.objectColor
 
-class Star(
+data class Node(
+        var id: String,
         var x: Float,
         var y: Float,
         var radius: Float,
         var xSpeed: Float,
-        var ySpeed: Float
+        var ySpeed: Float,
+        val connections: List<Node>?
 ) {
+
+    val list = arrayListOf<Node>()
+
     fun update() {
         x += xSpeed
         y += ySpeed
@@ -21,18 +27,14 @@ class Star(
         }
     }
 
-    fun draw(shape: ShapeRenderer) {
-        shape.setColor(0f, 1f, 1f, 1f)
-        shape.circle(x, y, radius)
-        shape.setColor(0f, 1f, 1f, 0.3f)
-        shape.circle(x, y, radius + 10)
-        shape.setColor(0f, 1f, 1f, 0.15f)
-        shape.circle(x, y, radius + 20)
-        shape.setColor(0f, 1f, 1f, 0.05f)
-        shape.circle(x, y, radius + 30)
-        shape.setColor(1f, 1f, 1f, 0.08f)
-        shape.circle(x, y, radius + 40)
-        shape.setColor(1f, 1f, 1f, 0.01f)
-        shape.circle(x, y, radius - 6)
+    fun drawWithGlow(shape: ShapeRenderer) {
+        for (i in 1..100) {
+            shape.color = objectColor(1f / i)
+            shape.circle(x, y, radius * (i.toFloat() / 10))
+        }
     }
+
+    fun count() = list.size
+
+    fun isThere(node: Node): Boolean = list.contains(node)
 }
