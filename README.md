@@ -1,7 +1,7 @@
 # Abstracts
 Digital Abstracts a experiment with Libgdx 
 
-- Node connection: 
+# Node connection: 
 <img src="https://github.com/franciscobarrios/Abstracts/blob/dev/images/node_connection.jpg" width="100">
 
 Sound credits: 

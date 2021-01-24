@@ -20,7 +20,7 @@ import java.util.*
 import kotlin.random.Random
 
 
-class GdxAppAbstract : ApplicationAdapter() {
+class GdxAppNodeConnection : ApplicationAdapter() {
 
     private lateinit var camera: OrthographicCamera
     private lateinit var shape: ShapeRenderer
@@ -85,7 +85,7 @@ class GdxAppAbstract : ApplicationAdapter() {
             nodes[i].update()
             nodes[i].drawWithGlow(shape)
             for (j in nodes.indices) {
-                val d = connector.distanceBetweenStars(nodes[i], nodes[j])
+                val d = connector.distanceBetweenNodes(nodes[i], nodes[j])
                 if (d <= CONNECT_DISTANCE) {
                     connector.connect(nodes[i], nodes[j])
                     if (!nodes[i].isThere(nodes[j])) {
