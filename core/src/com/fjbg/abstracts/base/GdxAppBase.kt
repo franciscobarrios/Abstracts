@@ -1,4 +1,4 @@
-package com.fjbg.abstract.base
+package com.fjbg.abstracts.base
 
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.graphics.OrthographicCamera

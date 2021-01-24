@@ -32,12 +32,17 @@
             android:theme="@style/GdxTheme.NoActionBar" />
 
         <activity
-            android:name="com.fjbg.abstract.NodeConnectionApp"
+            android:name=".NodeConnectionApp"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.fjbg.abstract.TilesApp"
+            android:name=".TilesApp"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".MeshApp"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
     </application>

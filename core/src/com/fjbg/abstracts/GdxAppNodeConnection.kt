@@ -1,4 +1,4 @@
-package com.fjbg
+package com.fjbg.abstracts
 
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
@@ -12,10 +12,10 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.utils.Align
-import com.fjbg.abstract.common.CONNECT_DISTANCE
-import com.fjbg.abstract.common.OBJECTS
-import com.fjbg.abstract.objects.Connector
-import com.fjbg.abstract.objects.Node
+import com.fjbg.abstracts.common.CONNECT_DISTANCE
+import com.fjbg.abstracts.common.OBJECTS
+import com.fjbg.abstracts.objects.Connector
+import com.fjbg.abstracts.objects.Node
 import java.util.*
 import kotlin.random.Random
 
@@ -52,18 +52,23 @@ class GdxAppNodeConnection : ApplicationAdapter() {
 
         for (i in 1..OBJECTS) {
             nodes.add(
-                Node(
-                    id = UUID.randomUUID().toString(),
-                    x = Random.nextInt(Gdx.graphics.width).toFloat(),
-                    y = Random.nextInt(Gdx.graphics.height).toFloat(),
-                    radius = (Random.nextInt(5) + 5).toFloat(),
-                    xSpeed = (Random.nextInt(1) + 1).toFloat(),
-                    ySpeed = (Random.nextInt(1) + 1).toFloat(),
-                    connections = null
-                )
+                createNode()
             )
         }
+
         Gdx.gl.glViewport(0, 0, Gdx.graphics.width, Gdx.graphics.height)
+    }
+
+    private fun createNode(): Node {
+        return Node(
+            id = UUID.randomUUID().toString(),
+            x = Random.nextInt(Gdx.graphics.width).toFloat(),
+            y = Random.nextInt(Gdx.graphics.height).toFloat(),
+            radius = (Random.nextInt(5) + 5).toFloat(),
+            xSpeed = (Random.nextInt(1) + 1).toFloat(),
+            ySpeed = (Random.nextInt(1) + 1).toFloat(),
+            connections = null
+        )
     }
 
     override fun render() {
@@ -73,7 +78,6 @@ class GdxAppNodeConnection : ApplicationAdapter() {
         Gdx.gl.glClearColor(0f, 0f, 0f, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
         camera.update()
-
 
         // Draw nodes and links
         shape.projectionMatrix = camera.combined

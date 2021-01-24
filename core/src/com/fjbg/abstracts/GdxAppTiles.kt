@@ -1,4 +1,4 @@
-package com.fjbg
+package com.fjbg.abstracts
 
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
@@ -7,8 +7,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.utils.TimeUtils
-import com.fjbg.abstract.common.randomColor
-import com.fjbg.abstract.objects.Tile
+import com.fjbg.abstracts.common.randomColor
+import com.fjbg.abstracts.objects.Tile
 import kotlin.random.Random
 
 class GdxAppTiles : ApplicationAdapter() {

@@ -1,8 +1,8 @@
-package com.fjbg.abstract.objects
+package com.fjbg.abstracts.objects
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.fjbg.abstract.common.CONNECT_DISTANCE
-import com.fjbg.abstract.common.objectColor
+import com.fjbg.abstracts.common.CONNECT_DISTANCE
+import com.fjbg.abstracts.common.objectColor
 import kotlin.math.sqrt
 
 data class Connector(
