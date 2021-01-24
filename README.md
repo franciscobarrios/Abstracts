@@ -4,10 +4,7 @@ Digital Abstracts
 - Node connection: 
 
 
-
-![](https://github.com/franciscobarrios/Abstracts/blob/dev/images/node_connection.jpg | width=50)
-
-
+<img src="https://github.com/franciscobarrios/Abstracts/blob/dev/images/node_connection.jpg" width="100">
 
 
 Sound credits: 
