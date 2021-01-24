@@ -1,9 +1,7 @@
 # Abstracts
 Digital Abstracts
 
-- Node connection: 
-
-
+- Node connection: ![screenshot](https://github.com/franciscobarrios/Abstracts/blob/dev/images/node_connection.jpg?raw=false)
 
 
 Sound credits: 
