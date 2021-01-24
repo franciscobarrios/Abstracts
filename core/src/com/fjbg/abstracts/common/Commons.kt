@@ -1,4 +1,4 @@
-package com.fjbg.abstract.common
+package com.fjbg.abstracts.common
 
 import com.badlogic.gdx.graphics.Color
 import kotlin.random.Random

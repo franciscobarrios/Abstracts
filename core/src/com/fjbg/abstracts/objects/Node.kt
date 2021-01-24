@@ -1,8 +1,8 @@
-package com.fjbg.abstract.objects
+package com.fjbg.abstracts.objects
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.fjbg.abstract.common.objectColor
+import com.fjbg.abstracts.common.objectColor
 import kotlin.random.Random
 
 data class Node(
@@ -16,7 +16,6 @@ data class Node(
 ) {
 
     val list = arrayListOf<Node>()
-    private val unexpected = Random.nextBoolean()
 
     fun update() {
         x += xSpeed
