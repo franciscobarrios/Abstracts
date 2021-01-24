@@ -11,7 +11,11 @@ eclipse.project.name = appName + "-core"
 dependencies {
     api "com.badlogicgames.gdx:gdx:$gdxVersion"
     api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+
 }
 repositories {
     mavenCentral()
 }
+java.targetCompatibility = JavaVersion.VERSION_1_8
