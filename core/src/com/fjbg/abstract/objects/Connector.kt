@@ -11,11 +11,11 @@ data class Connector(
 
     private val linked = arrayListOf<Pair<Node, Node>>()
 
-    fun distanceBetweenStars(n1: Node, n2: Node) =
+    fun distanceBetweenNodes(n1: Node, n2: Node) =
         sqrt((n1.y - n2.y) * (n1.y - n2.y) + (n1.x - n2.x) * (n1.x - n2.x))
 
     fun connect(n1: Node, n2: Node) {
-        val d = distanceBetweenStars(n1, n2)
+        val d = distanceBetweenNodes(n1, n2)
         val alpha = when {
             d < 100 -> 0.9f
             d >= 100 && d < 200 -> 0.75f
@@ -30,7 +30,7 @@ data class Connector(
     }
 
     fun createField(n1: Node, n2: Node, n3: Node) {
-        val d = distanceBetweenStars(n1, n2)
+        val d = distanceBetweenNodes(n1, n2)
         val alpha = when {
             d < 100 -> 0.09f
             d >= 100 && d < 200 -> 0.04f
