@@ -2,7 +2,7 @@ package com.fjbg
 
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.assets.AssetManager
+import com.badlogic.gdx.audio.Music
 import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.GL20
@@ -28,12 +28,10 @@ class GdxAppAbstract : ApplicationAdapter() {
     private lateinit var batch: SpriteBatch
     private lateinit var font: BitmapFont
     private lateinit var layout: GlyphLayout
-    private lateinit var assetManager: AssetManager
-    private lateinit var backgroundSound: Sound
+    private lateinit var backgroundMusic: Music
+
     private lateinit var connectionSound: Sound
     private lateinit var unplugSound: Sound
-    var backgroundSoundIsLoaded: Boolean = false
-    var backgroundSoundIsPlaying: Boolean = false
 
     var showText: Boolean = false
 
@@ -48,15 +46,9 @@ class GdxAppAbstract : ApplicationAdapter() {
 
         connectionSound = Gdx.audio.newSound(Gdx.files.internal("connection_sound.wav"))
         unplugSound = Gdx.audio.newSound(Gdx.files.internal("unplug_sound.wav"))
-
-        assetManager = AssetManager()
-        assetManager.load("background_sound.mp3", Sound::class.java)
-        assetManager.finishLoading()
-
-
-        backgroundSound = assetManager.get("background_sound.mp3", Sound::class.java)
-
-
+        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("background_sound.mp3"))
+        //backgroundMusic.play()
+        //backgroundMusic.setLooping(true);
 
         for (i in 1..OBJECTS) {
             nodes.add(
@@ -82,22 +74,6 @@ class GdxAppAbstract : ApplicationAdapter() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
         camera.update()
 
-        if (backgroundSoundIsLoaded) {
-            println("SOUND >>>>>>>>>>>>>>>>> ready to play")
-            println("SOUND >>>>>>>>>>>>>>>>> backgroundSoundIsPlaying: $backgroundSoundIsPlaying")
-            if (!backgroundSoundIsPlaying) {
-                backgroundSound.play()
-                println("SOUND >>>>>>>>>>>>>>>>> backgroundSound.play()")
-                backgroundSoundIsPlaying = true
-                println("SOUND >>>>>>>>>>>>>>>>> backgroundSoundIsPlaying: $backgroundSoundIsPlaying")
-            }else{
-                println("SOUND >>>>>>>>>>>>>>>>> backgroundSound.play() : false")
-            }
-        } else {
-            println("SOUND >>>>>>>>>>>>>>>>> NOT ready to play")
-            backgroundSound = assetManager.get("background_sound.mp3", Sound::class.java)
-            backgroundSoundIsLoaded = assetManager.isLoaded("background_sound.mp3")
-        }
 
         // Draw nodes and links
         shape.projectionMatrix = camera.combined
@@ -134,7 +110,7 @@ class GdxAppAbstract : ApplicationAdapter() {
                     val n1 = nodes[i].list[0]
                     val n2 = nodes[i].list[1]
                     val n3 = nodes[i].list[2]
-                    connector.createField(n1, n2, n3)
+                    //connector.createField(n1, n2, n3)
                 }
             }
         }
@@ -159,7 +135,7 @@ class GdxAppAbstract : ApplicationAdapter() {
         batch.dispose()
         font.dispose()
         shape.dispose()
-        backgroundSound.dispose()
+        backgroundMusic.dispose()
         connectionSound.dispose()
         unplugSound.dispose()
     }
