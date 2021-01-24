@@ -5,7 +5,7 @@ Digital Abstracts
 
 
 
-- ![](https://github.com/franciscobarrios/Abstracts/blob/dev/images/node_connection.jpg)
+![](https://github.com/franciscobarrios/Abstracts/blob/dev/images/node_connection.jpg | width=50)
 
 
 
