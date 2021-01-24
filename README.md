@@ -3,7 +3,11 @@ Digital Abstracts
 
 - Node connection: 
 
-![screenshot](https://github.com/franciscobarrios/Abstracts/blob/dev/images/node_connection.jpg?raw=false | width=100)
+
+
+![](https://github.com/franciscobarrios/Abstracts/blob/dev/images/node_connection.jpg | width=100)
+![](https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png | width=100)
+
 
 
 Sound credits: 
